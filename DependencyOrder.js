@@ -1,16 +1,16 @@
 function arrayTest() {
-  var arr = [1, 1, 3];
+  //each string contains one dependency: 'namePackage: dependency'
+  //valid input in Javascript
+  var packageArray = ['KittenService: CamelCaser'];
 
-  if(arr[0] == arr[1]){
-    var newArray = [];
-    return (newArray = ['kittenService: ', 'camelCase: KittenService']);
-  } else {
-    return false;
+  //store output list into array..need to modify later
+  var orderList = [];
+
+  for(var i=0; i<packageArray.length; i++) {
+    orderList = packageArray[i].split(": ");
+    return orderList;
   }
 }
 
-
-// return{
-//   add: function(a,b) {
-//     return a+b;
-//   }
+//need to output a comma separated list of package names in order of install, dependency precedes package
+// example: 'CamelCaser, KittenService'
