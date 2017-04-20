@@ -1,7 +1,7 @@
 describe("dependencyOrder", function(){
 
   it('should split the package name and dependency', function(){
-    expect(arrayTest()).toEqual(["KittenService", "CamelCaser"]);
+    expect(arrayTest()).toEqual('CamelCaser, KittenService');
   })
 
 });

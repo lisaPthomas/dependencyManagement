@@ -8,9 +8,15 @@ function arrayTest() {
 
   for(var i=0; i<packageArray.length; i++) {
     orderList = packageArray[i].split(": ");
-    return orderList;
+
+    var reverseOrder = orderList.reverse();
+
+    var dependencyList = reverseOrder[0] + ", " + reverseOrder[1]
+
+    };
+    return dependencyList;
   }
-}
+
 
 //need to output a comma separated list of package names in order of install, dependency precedes package
 // example: 'CamelCaser, KittenService'
