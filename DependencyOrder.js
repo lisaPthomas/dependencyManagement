@@ -1,22 +1,20 @@
 function arrayTest() {
   //each string contains one dependency: 'namePackage: dependency'
   //valid input in Javascript
-  var packageArray = ['KittenService: CamelCaser'];
+  var packageArray = ['KittenService: CamelCaser', 'Leetmeme: Cyberportal', 'Package: Toastr'];
 
   //store output list into array..need to modify later
-  var orderList = [];
+  var orderList = []; //reverses array indexes
+  var storeNewArray = []; //stores new array elements
 
+  //for loop iterates through packages and orders them so dependency comes first
   for(var i=0; i<packageArray.length; i++) {
-    orderList = packageArray[i].split(": ");
-
-    var reverseOrder = orderList.reverse();
-
-    var dependencyList = reverseOrder[0] + ", " + reverseOrder[1]
-
+    orderList = packageArray[i].split(": ").reverse();
+    storeNewArray.push(orderList[0], orderList[1]);
     };
-    return dependencyList;
+
+    var list = storeNewArray.join(", ");
+    return (list);
   }
 
-
-//need to output a comma separated list of package names in order of install, dependency precedes package
-// example: 'CamelCaser, KittenService'
+arrayTest();
