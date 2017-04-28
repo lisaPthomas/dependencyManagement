@@ -1,13 +1,21 @@
-function orderItem(stackArray, arrayInput) {
+function orderItem(stackArray, arrayInput, visited) {
     for (var i = 0; i < arrayInput.length; i++) {
-        var orderList = arrayInput[i].split(": ").reverse();
+        var node = arrayInput[i];
+        var orderList = node.split(": ");
 
-        if (orderList[0] === "") {
+        if(visited.includes(orderList[0])){
+          return;
+        } else {
+          topSortUtil(node, stackArray, visited)
+        }
+
+function topSortUtil(node, stackArray, visited) {
+        if (orderList[1] === "") {
             //needed to filter out existing packages
-            if (stackArray.includes(orderList[1])) {
-                continue;
+            if (stackArray.includes(orderList[0])) {
+                return;
             } else {
-                stackArray.splice(0, 0, orderList[1]);
+                stackArray.splice(0, 0, orderList[0]);
             }
         } else {
             orderList.forEach(function(value, index) {
@@ -19,6 +27,7 @@ function orderItem(stackArray, arrayInput) {
             })
         }
     }
+  }
     return stackArray;
 }
 orderItem();
