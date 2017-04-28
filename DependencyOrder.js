@@ -1,22 +1,27 @@
-function orderList(packageArray, item) {
-    var orderList = item.split(": ").reverse();
+function orderItem(stackArray, arrayInput) {
+    for (var i = 0; i < arrayInput.length; i++) {
+        var orderList = arrayInput[i].split(": ").reverse();
 
-    if (orderList[0] === "") {
-        packageArray.splice(0, 0, orderList[1]);
-    } else {
-    orderList.forEach(function(value, index){
-      if(packageArray.includes(value)){
-        console.log(packageArray);
-      } else {
-        packageArray.push(value);
-      }
-    })
-  }
-
-    return packageArray;
-
+        if (orderList[0] === "") {
+            //needed to filter out existing packages
+            if (stackArray.includes(orderList[1])) {
+                continue;
+            } else {
+                stackArray.splice(0, 0, orderList[1]);
+            }
+        } else {
+            orderList.forEach(function(value, index) {
+                if (stackArray.includes(value)) {
+                    return;
+                } else {
+                    stackArray.push(value);
+                }
+            })
+        }
+    }
+    return stackArray;
 }
-orderList();
+orderItem();
 
 // function arrayTest(packageArray) {
 //
