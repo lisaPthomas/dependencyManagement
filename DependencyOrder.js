@@ -1,22 +1,20 @@
 function orderItem(stackArray, arrayInput, visited) {
     for (var i = 0; i < arrayInput.length; i++) {
-        var node = arrayInput[i];
-        var orderList = node.split(": ");
-
+        var orderList = arrayInput[i].split(": ");
+        var package = orderList[0];
+        var dependency = orderList[1];
+    
         if(visited.includes(orderList[0])){
-          return;
+          continue;
         } else {
-          topSortUtil(node, stackArray, visited)
+          topSortUtil(package, dependency, stackArray, visited)
         }
 
-function topSortUtil(node, stackArray, visited) {
+function topSortUtil(package, dependency, stackArray, visited) {
         if (orderList[1] === "") {
-            //needed to filter out existing packages
-            if (stackArray.includes(orderList[0])) {
-                return;
-            } else {
+
                 stackArray.splice(0, 0, orderList[0]);
-            }
+
         } else {
             orderList.forEach(function(value, index) {
                 if (stackArray.includes(value)) {
@@ -28,7 +26,7 @@ function topSortUtil(node, stackArray, visited) {
         }
     }
   }
-    return stackArray;
+    return visited;
 }
 orderItem();
 
